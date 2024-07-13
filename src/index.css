@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, p, label {
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+h1, h2, h3, h4, h5, h6 {@apply font-mono font-semibold}
+input {@apply font-openSans placeholder:text-base outline-none placeholder:indent-2.5 text-green-800 placeholder:text-[#BFC5C4]; background-color: transparent;}
+.input{@apply border-b w-full border-red-400}
+
+@layer components {
+  .btn {@apply inline-block py-3 px-10 lg:px-20 rounded-[2rem] bg-green-400 text-white-400 font-bold}
+  .shadow {@apply drop-shadow-md px-10 shadow-[#187A77]/25}
+}
