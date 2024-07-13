@@ -3,9 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import { Logo } from '..';
 import { useState } from 'react';
 import { navLinks } from '../data/constant';
+import { CartState } from '../data/Context';
 
 const Header = () => {
 	const [isOpen, setOpen] = useState(false);
+	const {state: {cart}} = CartState()
 
 	return (
 		<header className="py-10 shadow-sm">
@@ -28,11 +30,16 @@ const Header = () => {
 				</nav>
 				<div className="flex cursor-pointer gap-1.5 lg:gap-3 items-center">
 					{headerIcons.map((icon, index) => (
-						<Link to={index === 2 ? '/cart' : ''} key={index}>
+						<Link className='relative' to={index === 2 ? '/cart' : ''} key={index}>
 							<img
 								src={icon}
 								alt={icon.split('/').pop().replace('.svg', '')}
 							/>
+							{(cart.length > 0 && index === 2) &&
+								<span className='absolute -top-1.5 -right-1.5 text-sm font-semibold text-white-400 bg-green-400 px-1.5 rounded-full'>
+									{cart.length}
+								</span>
+							}
 						</Link>
 					))}
 					<div

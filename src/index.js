@@ -12,6 +12,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Category from './sections/Category'
 import CartList from './components/CartList'
+import Loader from './components/Loader/Loader'
 import ProdColors from './components/ProdColors'
 import BreadCrumb from './components/BreadCrumb'
 import Recommended from './sections/Recommended'
@@ -22,5 +23,5 @@ import CheckoutList from './sections/CheckoutList'
 
 export { Btn, Cart, Home, Logo, Button, Layout, Footer, Header, Products, NotFound, Checkout,
   BreadCrumb, Hero, Category, Card, CartList, CartSummary, Recommended, ProdColors, CheckoutList,
-  CheckoutForm, ThankYou,
+  CheckoutForm, ThankYou, Loader
 }

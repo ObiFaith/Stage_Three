@@ -7,7 +7,9 @@ import {
 	createRoutesFromElements,
 } from 'react-router-dom';
 import './index.css'
+import 'react-toastify/ReactToastify.css'
 import { Cart, Home, NotFound, Checkout, Layout, Products, ThankYou } from '.'
+import Context from './data/Context';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -25,6 +27,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+	<Context>
     <RouterProvider router={router} />
+	</Context>
   </React.StrictMode>,
 )
