@@ -1,25 +1,4 @@
-import {
-	prod_img_1,
-	prod_img_2,
-	prod_img_3,
-	prod_img_4,
-	prod_img_5,
-	prod_img_6,
-	prod_img_7,
-	prod_img_8,
-	cart_img_1,
-	cart_img_2,
-	cart_img_3,
-	cart_img_4,
-	prod_img_9,
-	prod_img_10,
-	prod_img_11,
-	prod_img_12,
-	prod_img_13,
-	prod_img_14,
-	prod_img_15,
-	prod_img_16,
-} from '../assets';
+import { cart_img_1, cart_img_2, cart_img_3, cart_img_4 } from '../assets';
 
 export const navLinks = [
 	{ name: 'Home', to: '/home' },
@@ -51,73 +30,6 @@ export const categories = [
 	'Jewelry',
 	'Platters',
 	'Lanterns',
-];
-
-export const products = [
-	{
-		img: prod_img_1,
-		price: 450.0,
-		name: 'Standard pedestal bowl',
-		available: 55,
-		colors: ['#F5F5F5', '#0E605B', '#FFE27B'],
-		isNew: true,
-	},
-	{
-		img: prod_img_2,
-		price: 250.0,
-		name: '3-piece Calmaria set',
-		available: 12,
-		colors: ['#F5F5F5', '#771F96'],
-		isNew: false,
-	},
-	{
-		img: prod_img_3,
-		price: 250.0,
-		name: 'Flat clay barry',
-		available: 55,
-		colors: ['#F5F5F5', '#0E605B', '#FFE27B'],
-		isNew: false,
-	},
-	{
-		img: prod_img_4,
-		price: 80.0,
-		name: 'Deep cantu bowl',
-		available: 5,
-		colors: ['#150707', '#D75252', '#D7FCFC'],
-		isNew: false,
-	},
-	{
-		img: prod_img_5,
-		price: 100.0,
-		name: 'Piecer bowl',
-		available: 7,
-		colors: ['#AE6FFF', '#746AED', '#A14E11'],
-		isNew: false,
-	},
-	{
-		img: prod_img_6,
-		price: 250.0,
-		name: 'Tender petals',
-		available: 32,
-		colors: ['#F5F5F5', '#0E605B', '#A91688'],
-		isNew: true,
-	},
-	{
-		img: prod_img_7,
-		price: 100.0,
-		name: 'Sensei ceramic',
-		available: 35,
-		colors: ['#0E605B', '#CD651A'],
-		isNew: false,
-	},
-	{
-		img: prod_img_8,
-		price: 75.0,
-		name: 'Melon candy',
-		available: 35,
-		colors: ['#150707', '#D75252', '#D7FCFC'],
-		isNew: false,
-	},
 ];
 
 export const cartProds = [

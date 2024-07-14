@@ -1,7 +1,8 @@
-import { products } from '../data/constant';
 import { Card } from '..';
+import { CartState } from '../data/Context';
 
 const Recommended = () => {
+	const { state: { products } } = CartState()
 	const randomProd = products.sort(() => 0.5 - Math.random());
 	return (
 		<div className="py-36">

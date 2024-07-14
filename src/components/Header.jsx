@@ -3,11 +3,10 @@ import { Link, NavLink } from 'react-router-dom';
 import { Logo } from '..';
 import { useState } from 'react';
 import { navLinks } from '../data/constant';
-import { CartState } from '../data/Context';
 
 const Header = () => {
 	const [isOpen, setOpen] = useState(false);
-	const {state: {cart}} = CartState()
+	const cart = JSON.parse(localStorage.getItem('cart'))
 
 	return (
 		<header className="py-10 shadow-sm">

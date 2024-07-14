@@ -1,7 +1,29 @@
 import { current, del, minus, new_img, plus } from '../assets'
 import { ProdColors } from '..'
+import ApiHandler from '../hooks/ApiHandler'
+import { useEffect, useState } from 'react'
 
-const CartList = ({img, name, price, available, colors, isNew, qty}) => {
+const CartList = ({id, img, name, price, available_quantity, qty = 1}) => {
+  const { getProdExtraInfo } = ApiHandler()
+  const [colors, setColors] = useState([])
+  const [isNew, setNew] = useState(false)
+  const [extraInfo, setExtraInfo] = useState({});
+
+  /* Get extra info for all product */
+  useEffect(() => {
+    const fetchExtraInfo = async () => {
+      const extraInfo = await getProdExtraInfo(id)
+      setExtraInfo(extraInfo)
+    }
+
+    fetchExtraInfo()
+  }, [])
+
+  useEffect(() => {
+    if (extraInfo.colors) setColors(JSON.parse(extraInfo.colors))
+    if (extraInfo.isNew) setNew(JSON.parse(extraInfo.isNew.toLowerCase()))
+  }, [extraInfo])
+
   return (
     <div>
       <div className="lg:grid flex gap-5 lg:grid-cols-5 md:gap-10 lg:gap-20">
@@ -16,7 +38,7 @@ const CartList = ({img, name, price, available, colors, isNew, qty}) => {
                 <p>{name}</p>
                 <div className="flex gap-2">
                   <img src={current} alt="current" />
-                  <p>{available} pieces available</p>
+                  <p>{available_quantity} pieces available</p>
                 </div>
               </div>
               <ProdColors colors={colors} className='max-lg:hidden' />

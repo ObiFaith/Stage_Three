@@ -17,8 +17,10 @@ import icon_menu from './icons/icon_menu.svg';
 import apple_pay from './images/apple_pay.png';
 import icon_close from './icons/icon_close.svg';
 import left_arrow from './icons/left_arrow.svg';
+import arrow_left from './icons/arrow_left.svg';
 import mastercard from './icons/mastercard.svg';
 import google_pay from './images/google_pay.png';
+import arrow_right from './icons/arrow_right.svg';
 import input_search from './icons/input_search.svg';
 
 import cart_img_1 from './images/cart_img_1.png';
@@ -41,11 +43,15 @@ import prod_img_13 from './images/prod_img_13.png';
 import prod_img_14 from './images/prod_img_14.png';
 import prod_img_15 from './images/prod_img_15.png';
 import prod_img_16 from './images/prod_img_16.png';
+import prod_img_17 from './images/prod_img_17.png';
+import prod_img_18 from './images/prod_img_18.png';
+import prod_img_19 from './images/prod_img_19.png';
 
 export const headerIcons = [ search, wishlist, cart, user ]
 export const footerIcons = [apple_pay, visa, google_pay, paypal]
 export { logo, icon_menu, icon_close, left_arrow, filter, input_search, hero_img, current, wishlist, cart,
   prod_img_1, prod_img_2, prod_img_3, prod_img_4, prod_img_5, prod_img_6, prod_img_7, prod_img_8, prod_img_9,
   prod_img_10, prod_img_11, prod_img_12, prod_img_13, prod_img_14, prod_img_15, prod_img_16, cart_img_1,
-  cart_img_2, cart_img_3, cart_img_4, new_img, plus, minus, del, paypal, visa, mastercard, gift
+  cart_img_2, cart_img_3, cart_img_4, new_img, plus, minus, del, paypal, visa, mastercard, gift, prod_img_17,
+  prod_img_18, prod_img_19, arrow_left, arrow_right
 }
