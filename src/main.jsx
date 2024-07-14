@@ -8,15 +8,15 @@ import {
 } from 'react-router-dom';
 import './index.css'
 import 'react-toastify/ReactToastify.css'
-import { Cart, Home, NotFound, Checkout, Layout, Products, ThankYou } from '.'
+import { Cart, NotFound, Checkout, Layout, Products, ThankYou, Product } from '.'
 import Context from './data/Context';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Layout />}>
-			<Route path='/home' element={<Home />} />
 			<Route index element={<Products />} />
-			<Route path="/product" element={<Products />} />
+			<Route path='products' element={<Products />} />
+			<Route path='products/:product' element={<Product />} />
 			<Route path='/cart' element={<Cart />} />
 			<Route path='/checkout' element={<Checkout />} />
 			<Route path='/thank-you' element={<ThankYou />} />

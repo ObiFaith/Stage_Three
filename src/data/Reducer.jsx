@@ -10,8 +10,8 @@ export const Reducer = (state, action) => {
 			return {
 				...state,
 				cart: state.cart.map(prod =>
-					prod.id === action.payload.id
-						? { ...prod, available_quantity: prod.available_quantity + 1 }
+					prod.id === action.payload
+						? { ...prod, qty: prod.qty + 1 }
 						: prod
 				),
 			};
@@ -19,13 +19,13 @@ export const Reducer = (state, action) => {
       return {
         ...state,
         cart: state.cart.map(prod =>
-          prod.id === action.payload.id
-            ? { ...prod, available_quantity: prod.available_quantity - 1 }
+          prod.id === action.payload
+            ? { ...prod, qty: prod.qty > 1 ? prod.qty - 1 : 1 }
             : prod
         ),
       };
 		case 'DEL_FROM_CART':
-      return {...state, cart: state.cart.filter(prod => prod.id !== action.payload.id)}
+      return {...state, cart: state.cart.filter(prod => prod.id !== action.payload)}
     default: return state;
 	}
 };

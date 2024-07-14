@@ -1,8 +1,8 @@
 import { cart_img_1, cart_img_2, cart_img_3, cart_img_4 } from '../assets';
 
 export const navLinks = [
-	{ name: 'Home', to: '/home' },
-	{ name: 'Products', to: '/' },
+	{ name: 'Home', to: '/' },
+	{ name: 'Products', to: '/products' },
 	{ name: 'Best Sellers', to: '/sellers' },
 	{ name: 'Catalog', to: '/catalog' },
 	{ name: 'Contact Us', to: '/contact' },

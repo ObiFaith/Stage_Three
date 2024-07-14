@@ -2,7 +2,7 @@ import axios from "axios";
 import { CartState } from "../data/Context";
 
 const ApiHandler = () => {
-  const { state: { cart }, dispatch } = CartState();
+  const { dispatch } = CartState();
 
   const app_id = import.meta.env.VITE_APP_ID;
   const org_id = import.meta.env.VITE_ORG_ID;
@@ -12,10 +12,9 @@ const ApiHandler = () => {
     try {
       const { data } = await axios.get(`/api/products?organization_id=${org_id}&Appid=${app_id}&Apikey=${api_key}`);
       const products = data.items.sort((a, b) => new Date(a.date_created) - new Date(b.date_created));
-      const productsWithQty = products.map(product => { return {...product, qty: 1}})
 
-      dispatch({ type: 'SET_PRODUCTS', payload: productsWithQty });
-      localStorage.setItem('products', JSON.stringify(productsWithQty));
+      dispatch({ type: 'SET_PRODUCTS', payload: products });
+      localStorage.setItem('products', JSON.stringify(products));
     } catch (error) {
       console.log('error getting products', error);
     }
@@ -35,15 +34,7 @@ const ApiHandler = () => {
     }
   };
 
-  const addToCart = (product) => {
-    if (!cart.find(product.id)) {
-      dispatch({ type: 'ADD_TO_CART', payload: product });
-      console.log(cart)
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-  };
-
-  return { getProducts, getProdExtraInfo, addToCart };
+  return { getProducts, getProdExtraInfo };
 };
 
 export default ApiHandler;

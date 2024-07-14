@@ -1,7 +1,8 @@
 import { BreadCrumb, CartList, CartSummary, Recommended } from '..';
+import { CartState } from '../data/Context';
 
 const Cart = () => {
-	const cart = JSON.parse(localStorage.getItem('cart'))
+	const { state: { cart } } = CartState()
 	return (<>
 		<BreadCrumb name="Your Cart" search={true} />
 		<div>
