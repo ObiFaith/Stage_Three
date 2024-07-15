@@ -11,6 +11,7 @@ const ApiHandler = () => {
   const getProducts = async () => {
     try {
       const { data } = await axios.get(`/api/products?organization_id=${org_id}&Appid=${app_id}&Apikey=${api_key}`);
+      console.log(data)
       const products = data.items.sort((a, b) => new Date(a.date_created) - new Date(b.date_created));
 
       dispatch({ type: 'SET_PRODUCTS', payload: products });
