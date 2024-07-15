@@ -9,7 +9,7 @@ const CartList = ({id, img, name, price, available_quantity, qty, url_slug, colo
     <div>
       <div className="lg:grid flex gap-5 lg:grid-cols-5 md:gap-10 lg:gap-20">
         <div className="relative lg:border border-[#BAE2E1] rounded-[32px] lg:p-4">
-          <img src={`https://api.timbu.cloud/images/${img}`} alt={url_slug} />
+          <img className='max-sm:w-full object-cover' src={`https://api.timbu.cloud/images/${img}`} alt={url_slug} />
           {isNew && <img width={52} className="absolute top-0 lg:top-3 lg:left-3" src={new_img} alt='new product'/>}
         </div>
         <div className="lg:col-span-4 max-lg:w-full max-sm:w-auto grid lg:grid-cols-4">
@@ -24,7 +24,7 @@ const CartList = ({id, img, name, price, available_quantity, qty, url_slug, colo
               </div>
               <ProdColors colors={colors} className='max-lg:hidden' />
             </div>
-            <div className="flex items-center max-sm:justify-center max-md:my-2 gap-4 sm:gap-6 lg:gap-x-10 border border-green-600 py-1 px-2.5 rounded-[20px]">
+            <div className="flex items-center max-sm:my-4 max-sm:justify-between max-md:my-2 gap-4 sm:gap-6 lg:gap-x-10 border border-green-600 py-1 px-2.5 rounded-[20px]">
               <div className='cursor-pointer'><img onClick={() => dispatch({type: 'DECR_PROD_QTY_IN_CART', payload: id})} src={minus} alt="sub" /></div>
               <span className='text-lg font-bold text-red-400'>{qty}</span>
               <div className='cursor-pointer'><img onClick={() => dispatch({type: 'INCR_PROD_QTY_IN_CART', payload: id})} src={plus} alt="add" /></div>
