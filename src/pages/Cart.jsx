@@ -31,7 +31,7 @@ const Cart = () => {
 						<p className="text-sm text-red-400">Apply discount</p>
 					</div>
 					<CartSummary btn={true} />
-					<Recommended />
+					<Recommended title='People also buy' />
 				</div>
 			: <h1 className="lg:text-4xl md:text-2xl text-xl text-center pt-16 pb-32">No product in cart yet!</h1>}
 		</div>

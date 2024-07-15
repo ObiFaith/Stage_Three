@@ -1,15 +1,12 @@
 import { cart, current, wishlist, new_img } from "../assets"
 import { useEffect, useState } from "react"
 import ApiHandler from "../hooks/ApiHandler"
-import { CartState } from "../data/Context"
 import { Link } from "react-router-dom"
 
 const Card = ({id, img, name, price, available_quantity, url_slug}) => {
-  const { getProdExtraInfo } = ApiHandler()
+  const { getProdExtraInfo, addToCart } = ApiHandler()
   const [colors, setColors] = useState([])
   const [isNew, setNew] = useState(false)
-  const { dispatch } = CartState()
-  const [isProdInCart, setProdInCart] = useState(false)
   const [extraInfo, setExtraInfo] = useState({});
 
   /* Get extra info for all product */
@@ -26,13 +23,6 @@ const Card = ({id, img, name, price, available_quantity, url_slug}) => {
     if (extraInfo.colors) setColors(JSON.parse(extraInfo.colors))
     if (extraInfo.isNew) setNew(JSON.parse(extraInfo.isNew.toLowerCase()))
   }, [extraInfo])
-
-  const addToCart = (product) => {
-    if (!isProdInCart) {
-      dispatch({ type: 'ADD_TO_CART', payload: product });
-      setProdInCart(!isProdInCart)
-    }
-  };
 
   return (
     <div className="border grid gap-6 border-[#BAE2E1] rounded-[32px] p-4">

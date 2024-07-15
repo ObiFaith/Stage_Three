@@ -1,5 +1,6 @@
 import axios from "axios";
 import { CartState } from "../data/Context";
+import { useState } from "react";
 
 const ApiHandler = () => {
   const { dispatch } = CartState();
@@ -15,9 +16,9 @@ const ApiHandler = () => {
       const products = data.items.sort((a, b) => new Date(a.date_created) - new Date(b.date_created));
 
       dispatch({ type: 'SET_PRODUCTS', payload: products });
-      localStorage.setItem('products', JSON.stringify(products));
     } catch (error) {
       console.log('error getting products', error);
+      return [];
     }
   };
 
@@ -34,8 +35,16 @@ const ApiHandler = () => {
       return {};
     }
   };
+  const [isProdInCart, setProdInCart] = useState(false)
 
-  return { getProducts, getProdExtraInfo };
+  const addToCart = (product) => {
+    if (!isProdInCart) {
+      dispatch({ type: 'ADD_TO_CART', payload: product });
+      setProdInCart(prev => !prev)
+    }
+  };
+
+  return { getProducts, getProdExtraInfo, addToCart };
 };
 
 export default ApiHandler;
