@@ -1,7 +1,8 @@
-import { cartProds } from '../data/constant';
 import { BreadCrumb, Btn, CartSummary, CheckoutForm, CheckoutList } from '..';
+import { CartState } from '../data/Context';
 
 const Checkout = () => {
+	const {state: {cart}} = CartState()
 	return (
 		<>
 			<BreadCrumb name="Checkout page" backTo="/product" />
@@ -12,7 +13,7 @@ const Checkout = () => {
 							<h2 className="lg:text-2xl text-center text-xl text-green-400">
 								Order summary
 							</h2>
-							{cartProds.map(prod => (
+							{cart.map(prod => (
 								<CheckoutList key={prod.name} {...prod} />
 							))}
 						</div>

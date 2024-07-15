@@ -52,7 +52,7 @@ const Card = ({id, img, name, price, available_quantity, url_slug}) => {
               <img src={current} alt="current" />
               <p>{available_quantity} pieces available</p>
             </div>
-            <img className="cursor-pointer" onClick={() => addToCart({id, img, name, price, available_quantity, url_slug, qty: 1})} src={cart} alt="add to cart" />
+            <img className="cursor-pointer" onClick={() => addToCart({id, img, name, price, available_quantity, url_slug, colors, isNew, qty: 1})} src={cart} alt="add to cart" />
           </div>
         </div>
       </div>

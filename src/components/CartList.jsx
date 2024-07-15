@@ -1,37 +1,16 @@
 import { current, del, minus, new_img, plus } from '../assets'
 import { ProdColors } from '..'
-import ApiHandler from '../hooks/ApiHandler'
-import { useEffect, useState } from 'react'
 import { CartState } from '../data/Context'
 
-const CartList = ({id, img, name, price, available_quantity, qty, url_slug}) => {
+const CartList = ({id, img, name, price, available_quantity, qty, url_slug, colors, isNew}) => {
   const { dispatch } = CartState()
-  const { getProdExtraInfo } = ApiHandler()
-  const [colors, setColors] = useState([])
-  const [isNew, setNew] = useState(false)
-  const [extraInfo, setExtraInfo] = useState({});
-
-  /* Get extra info for all product */
-  useEffect(() => {
-    const fetchExtraInfo = async () => {
-      const extraInfo = await getProdExtraInfo(id)
-      setExtraInfo(extraInfo)
-    }
-
-    fetchExtraInfo()
-  }, [])
-
-  useEffect(() => {
-    if (extraInfo.colors) setColors(JSON.parse(extraInfo.colors))
-    if (extraInfo.isNew) setNew(JSON.parse(extraInfo.isNew.toLowerCase()))
-  }, [extraInfo])
 
   return (
     <div>
       <div className="lg:grid flex gap-5 lg:grid-cols-5 md:gap-10 lg:gap-20">
         <div className="relative lg:border border-[#BAE2E1] rounded-[32px] lg:p-4">
           <img src={`https://api.timbu.cloud/images/${img}`} alt={url_slug} />
-          {isNew && <img width={52} className="absolute top-3 left-3" src={new_img} alt='new product'/>}
+          {isNew && <img width={52} className="absolute top-0 lg:top-3 lg:left-3" src={new_img} alt='new product'/>}
         </div>
         <div className="lg:col-span-4 max-lg:w-full max-sm:w-auto grid lg:grid-cols-4">
           <div className="flex md:gap-4 max-sm:flex-col justify-between col-span-2 sm:items-center">
@@ -52,12 +31,12 @@ const CartList = ({id, img, name, price, available_quantity, qty, url_slug}) => 
             </div>
           </div>
           <div className="flex lg:*:ms-20 justify-between lg:justify-around col-span-2 items-center">
-            <div className="flex gap-2">
+            <div className="flex lg:gap-2">
               <ProdColors colors={colors} className='lg:hidden' />
-              <h3 className='lg:text-xl text-lg text-green-500'>${price}</h3>
+              <h3 className='max-lg:hidden lg:text-xl text-lg text-green-500'>${price}</h3>
             </div>
             <div className="flex justify-between items-center gap-4">
-              <h3 className='max-lg:hidden lg:text-xl text-lg text-green-500'>${price * qty}</h3>
+              <h3 className='lg:text-xl text-lg text-green-500'>${price * qty}</h3>
               <div className='cursor-pointer'><img onClick={() => dispatch({type: 'DEL_FROM_CART', payload: id})} src={del} alt="del" /></div>
             </div>
           </div>

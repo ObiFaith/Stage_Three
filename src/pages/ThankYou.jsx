@@ -1,9 +1,10 @@
-import { cartProds } from '../data/constant';
 import { BreadCrumb, Btn, CartSummary, CheckoutList } from '..';
 import { Link } from 'react-router-dom';
 import { gift } from '../assets';
+import { CartState } from '../data/Context';
 
 const ThankYou = () => {
+	const {state: {cart}} = CartState()
 	return (
 		<>
 			<BreadCrumb name="Checkout page" backTo="/checkout" />
@@ -20,7 +21,7 @@ const ThankYou = () => {
 							<h2 className="lg:text-xl text-center text-lg text-green-400">
 								Order summary
 							</h2>
-							{cartProds.map(prod => (
+							{cart.map(prod => (
 								<CheckoutList key={prod.name} {...prod} />
 							))}
 						</div>
