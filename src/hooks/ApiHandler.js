@@ -7,11 +7,11 @@ const ApiHandler = () => {
   const app_id = import.meta.env.VITE_APP_ID;
   const org_id = import.meta.env.VITE_ORG_ID;
   const api_key = import.meta.env.VITE_API_KEY;
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const getProducts = async () => {
     try {
-      const { data } = await axios.get(`/api/products?organization_id=${org_id}&Appid=${app_id}&Apikey=${api_key}`);
-      console.log(data)
+      const { data } = await axios.get(`${apiUrl}/products?organization_id=${org_id}&Appid=${app_id}&Apikey=${api_key}`);
       const products = data.items.sort((a, b) => new Date(a.date_created) - new Date(b.date_created));
 
       dispatch({ type: 'SET_PRODUCTS', payload: products });
@@ -23,7 +23,7 @@ const ApiHandler = () => {
 
   const getProdExtraInfo = async (id) => {
     try {
-      const { data } = await axios.get(`/api/extrainfo/products/${id}`);
+      const { data } = await axios.get(`${apiUrl}/extrainfo/products/${id}`);
       const prodExtraInfo = data.reduce((acc, item) => {
         acc[item.key] = item.value;
         return acc;
